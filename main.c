@@ -99,6 +99,7 @@ void emitirAlertas() {
 void generarHistograma() {
     printf("\n[!] Funcion para GENERAR HISTOGRAMA en construccion...\n");
     // Aquí irá la lógica para contar las notas en cada rango y mostrarlas.
+    // Hola broski
 }
 void calcularPromediosEstudiante(){
     printf("\n[!] Funcion para CALCULAR PROMEDIOS POR ESTUDIANTE en construccion...\n");
