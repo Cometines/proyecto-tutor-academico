@@ -2,10 +2,10 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-float calificaciones[40][5];
+int calificaciones[40][5];
+char nombresEstudiantes[40][25];
 int numeroEstudiantes=0;
 int numeroEvaluaciones=0;
-
 void mostrarMenu();
 void capturarCalificaciones();
 void mostrarReportesBasicos();//a partir de esta función se llamarán a otras funciones mas pequeñas, que realizarán los diferentes reportes (divide y vencerás)
