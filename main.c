@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-float calificaciones[40][5];
+float calificaciones[40][5] = {0};
 int numeroEstudiantes=0;
 int numeroEvaluaciones=0;
 
@@ -99,7 +99,7 @@ void emitirAlertas() {
 void generarHistograma() {
     printf("\n[!] Funcion para GENERAR HISTOGRAMA en construccion...\n");
     // Aquí irá la lógica para contar las notas en cada rango y mostrarlas.
-    // Hola broski
+    // Hola broski, Hola leo. Inicié la matriz en 0, es el otro cambio.
 }
 void calcularPromediosEstudiante(){
     printf("\n[!] Funcion para CALCULAR PROMEDIOS POR ESTUDIANTE en construccion...\n");
