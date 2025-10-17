@@ -5,8 +5,8 @@ extern int calificaciones[40][5];
 extern int numeroEstudiantes;
 extern int numeroEvaluaciones;
 
-void calcularPromedios(float Calificaciones[40][5], int Estudiantes, int Evaluaciones);
-void asignarPosicion(float promedio);
+void calcularPromedios(int Calificaciones[40][5], int Estudiantes, int Evaluaciones);
+void asignarPosicion(int promedio);
 void mostrarHistograma(int estudiantes);
-void iniciarHistograma(float Calificaciones[40][5], int Estudiantes, int Evaluaciones);
+void iniciarHistograma(int Calificaciones[40][5], int Estudiantes, int Evaluaciones);
 #endif
