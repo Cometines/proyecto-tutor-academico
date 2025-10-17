@@ -5,8 +5,8 @@
 
 short int rangos[5] = {0};
 
-static void calcularPromedios(float calificaciones[40][5], int estudiantes, int evaluaciones){
-    float promedio = 0;
+static void calcularPromedios(int calificaciones[40][5], int estudiantes, int evaluaciones){
+    int promedio = 0;
     for(size_t f = 0; f <= estudiantes; f++){
         for(size_t c = 0; c <= evaluaciones; c++){
             promedio += calificaciones[f][c];
@@ -16,7 +16,7 @@ static void calcularPromedios(float calificaciones[40][5], int estudiantes, int 
     }
 }
 
-static void asignarPosicion(float promedio){
+static void asignarPosicion(int promedio){
     short int r1 = 0, r2 = 59;
     for(size_t i = 0; i < 5; i++){
         if(promedio >= r1 && promedio <= r2){
@@ -32,7 +32,7 @@ static void asignarPosicion(float promedio){
 
 static void mostrarHistograma(int estudiantes){
     size_t j;
-    float porcentaje = 0;
+    int porcentaje = 0;
     for (size_t i = 0; i < 5; i++)
     {
         printf("%d ", rangos[i]);
@@ -48,6 +48,6 @@ static void mostrarHistograma(int estudiantes){
     
 }
 
-void iniciarHistograma(float calificaciones[40][5], int estudiantes, int evaluaciones){
-    calcularPromedios(calificaciones, estudiantes, evaluaciones);
+void iniciarHistograma(int Calificaciones[40][5], int Estudiantes, int Evaluaciones){
+    calcularPromedios(Calificaciones, Estudiantes, Evaluaciones);
 }
