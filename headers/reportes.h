@@ -8,7 +8,7 @@ extern int numeroEvaluaciones=0;
 
 void mostrarReportes();
 void calcularPromedioEvaluacion();
-void calcularPromedioAlumno();
+void calcularPromedioEstudiante();
 void calcularRanking();
 void mostrarPeorCalificacion();
 
