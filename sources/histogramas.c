@@ -50,4 +50,5 @@ static void mostrarHistograma(int estudiantes){
 
 void iniciarHistograma(int Calificaciones[40][5], int Estudiantes, int Evaluaciones){
     calcularPromedios(Calificaciones, Estudiantes, Evaluaciones);
+    mostrarHistograma(Estudiantes);
 }
