@@ -63,7 +63,7 @@ void generarRanking(){
     printf("\n--- Ranking (Top 3) ---\n");
     // Nos aseguramos de no intentar mostrar 3 si hay menos de 3 estudiantes
     int topN = (numeroEstudiantes < 3) ? numeroEstudiantes : 3;
-    //si el numero
+    //si el numero de estudiantes es menor a 3 topN=numeroEstudiantes, si no, topN=3
     for (int i = 0; i < topN; i++) {
         printf("%d. %s - Promedio: %.2f\n", i + 1, ranking[i].nombre, ranking[i].promedio);
     }
