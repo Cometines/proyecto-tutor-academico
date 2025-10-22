@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "../headers/reportes.h"
 
 void calcularPromedioEstudiante(){
@@ -21,5 +22,55 @@ void calcularPromedioEvaluacion(){
         }
         promedio/=numeroEstudiantes;//se divide la suma de todas las calificaciones del grupo en esa evaluacion entre el tamaño del grupo(el numero de estudiantes)
         printf("Promedio general del grupo en la evaluación %d: %d",(j+1),promedio);
+    }
+}
+void generarRanking(){
+    // 1. Definimos nuestra "caja" temporal.
+    // Esta struct solo existe dentro de esta función.
+    struct EstudianteRanking {
+        char nombre[50];
+        float promedio;
+    };
+
+    // 2. Creamos un arreglo de estas "cajas",
+    // una por cada estudiante.
+    struct EstudianteRanking ranking[numeroEstudiantes];
+
+    // 3. Llenamos el arreglo de ranking
+    for (int i = 0; i < numeroEstudiantes; i++) {
+        // Calculamos el promedio para el estudiante 'i'
+        float suma = 0.0;
+        for (int j = 0; j < numeroEvaluaciones; j++) {
+            suma += calificaciones[i][j];
+        }
+        float promedio_estudiante = suma / numeroEvaluaciones;
+
+        // Guardamos los datos JUNTOS en la "caja"
+        ranking[i].promedio = promedio_estudiante;
+        strcpy(ranking[i].nombre, nombresEstudiantes[i]);
+    }
+
+    // 4. Ordenamos el arreglo de "cajas" (Método Burbuja Descendente)
+    // Comparamos los promedios, pero intercambiamos LA CAJA ENTERA.
+    for (int i = 0; i < numeroEstudiantes - 1; i++) {
+        for (int j = 0; j < numeroEstudiantes - i - 1; j++) {
+            // Comparamos promedios
+            if (ranking[j].promedio < ranking[j + 1].promedio) {
+                // Intercambiamos la "caja" completa
+                struct EstudianteRanking temp = ranking[j];
+                ranking[j] = ranking[j + 1];
+                ranking[j + 1] = temp;
+            }
+        }
+    }
+
+    // 5. Mostramos el Top 3
+    printf("\n--- Ranking (Top 3) ---\n");
+    
+    // Nos aseguramos de no intentar mostrar 3 si hay menos de 3 estudiantes
+    int topN = (numeroEstudiantes < 3) ? numeroEstudiantes : 3;
+    //si el numero
+    for (int i = 0; i < topN; i++) {
+        printf("%d. %s - Promedio: %.2f\n", i + 1, ranking[i].nombre, ranking[i].promedio);
     }
 }
