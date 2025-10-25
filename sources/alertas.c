@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "../headers/alertas.h" //Subir para encontrar al arichivo
-emitirAlertas(){
+void emitirAlertas(){
     float prom;
     int filas,columnas;
     for(filas=0;filas<numeroEstudiantes;filas++){
