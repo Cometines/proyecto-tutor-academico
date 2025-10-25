@@ -2,6 +2,14 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+/*Integrantes del equipo:
+Méndez Lagunes Leonardo Alberto
+Feliciano González Ervin Antonio
+Sánchez Trujillo Emmanuel
+García Gómez Olga Lisseth
+Reyes Torres Kelaia
+*/
+
 int calificaciones[40][5];
 char nombresEstudiantes[40][25];
 int numeroEstudiantes=0;
