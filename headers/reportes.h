@@ -3,13 +3,13 @@
 
 extern int calificaciones[40][5];
 extern char nombresEstudiantes[40][25];
+extern float promediosEstudiantes[40];
 extern int numeroEstudiantes=0;
 extern int numeroEvaluaciones=0;
 
 void mostrarReportes();
 void calcularPromedioEvaluacion();
 void calcularPromedioEstudiante();
-void calcularRanking();
-void mostrarPeorCalificacion();
+void generarRanking();
 
 #endif
