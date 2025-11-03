@@ -11,7 +11,8 @@ Reyes Torres Kelaia
 */
 
 int calificaciones[40][5];
-char nombresEstudiantes[40][25];
+char nombresEstudiantes[40][50];
+float promediosEstudiantes[40];
 int numeroEstudiantes=0;
 int numeroEvaluaciones=0;
 
