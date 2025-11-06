@@ -3,8 +3,6 @@
 
 extern int calificaciones[40][5];
 extern char nombresEstudiantes[40][25];
-extern int numeroEstudiantes=0;
-extern int numeroEvaluaciones=0;
 
 int capturarEstudiantescant();
 
