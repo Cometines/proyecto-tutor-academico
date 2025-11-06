@@ -2,7 +2,7 @@
 #define CAPTURA_H //se define la libreria para que no se duplique 
 
 extern int calificaciones[40][5];
-extern char nombresEstudiantes[40][25];
+extern char nombresEstudiantes[40][50];
 
 int capturarEstudiantescant();
 
