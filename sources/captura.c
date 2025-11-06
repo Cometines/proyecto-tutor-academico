@@ -40,7 +40,7 @@ void capturarCalificaciones(int numeroEstudiantes, int numeroEvaluaciones){
     for (int i = 0; i < numeroEstudiantes; i++) {
         printf("\nNombre del Estudiante %d: ", i + 1);
         // scanf(" [^\n]", nombresEstudiantes[i]); // Lee nombres con espacios
-        fgets(nombresEstudiantes[i], 25, stdin);
+        fgets(nombresEstudiantes[i], 50, stdin);
         nombresEstudiantes[i][strcspn(nombresEstudiantes[i], "\n")] = '\0';
 
         for (int j = 0; j < numeroEvaluaciones; j++) {

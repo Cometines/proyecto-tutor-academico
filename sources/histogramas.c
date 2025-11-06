@@ -4,19 +4,18 @@
 #include "../headers/histogramas.h"
 
 short int rangos[5] = {0};
+// static void calcularPromedios(int calificaciones[40][5], int estudiantes, int evaluaciones){
+//     int promedio = 0;
+//     for(size_t f = 0; f <= estudiantes; f++){
+//         for(size_t c = 0; c <= evaluaciones; c++){
+//             promedio += calificaciones[f][c];
+//         }
+//         promedio /= evaluaciones;
+//         asignarPosicion(promedio);
+//     }
+// }
 
-static void calcularPromedios(int calificaciones[40][5], int estudiantes, int evaluaciones){
-    int promedio = 0;
-    for(size_t f = 0; f <= estudiantes; f++){
-        for(size_t c = 0; c <= evaluaciones; c++){
-            promedio += calificaciones[f][c];
-        }
-        promedio /= evaluaciones;
-        asignarPosicion(promedio);
-    }
-}
-
-static void asignarPosicion(int promedio){
+static void asignarPosicion(float promedio){
     short int r1 = 0, r2 = 59;
     for(size_t i = 0; i < 5; i++){
         if(promedio >= r1 && promedio <= r2){
@@ -48,7 +47,11 @@ static void mostrarHistograma(int estudiantes){
     
 }
 
-void iniciarHistograma(int Calificaciones[40][5], int Estudiantes, int Evaluaciones){
-    calcularPromedios(Calificaciones, Estudiantes, Evaluaciones);
+void iniciarHistograma(int Estudiantes, int Evaluaciones){
+    // calcularPromedios(Calificaciones, Estudiantes, Evaluaciones);
+    for (size_t i = 0; i < 40; i++)
+    {
+        asignarPosicion(promedioEstudiantes[i]);
+    }
     mostrarHistograma(Estudiantes);
 }
