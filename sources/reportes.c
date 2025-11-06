@@ -1,36 +1,53 @@
 #include <stdio.h>
+#include <stddef.h>
 #include <string.h>
 #include "../headers/reportes.h"
 
 void mostrarReportes(){
 
 }
-void calcularPromedioEstudiante(){
+void calcularPromedioEstudiante(int num_estudiantes, int num_evaluaciones){
     float promedio;
-    printf("\n--- PROMEDIOS GENERALES DE LOS ESTUDIANTES DURANTE SUS %d EVALUACIONES ---", numeroEvaluaciones);
-    for(int i=0;i<numeroEstudiantes;i++){//El ciclo solo recorre hasta el limite necesario (el numero de estudiantes)
+    for(size_t i=0;i<num_estudiantes;i++){//El ciclo solo recorre hasta el limite necesario (el numero de estudiantes)
         promedio=0.0;
-        for(int j=0;j<numeroEvaluaciones;j++){//El ciclo solo recorre hasta el limite necesario (el numero de evaluaciones)
+        for(size_t j=0;j<num_evaluaciones;j++){//El ciclo solo recorre hasta el limite necesario (el numero de evaluaciones)
             promedio+=calificaciones[i][j];//Sumamos las calificaciones de cada alumno en todas sus evaluaciones
         }
-        promedio/=numeroEvaluaciones;//Se divide la suma de sus calificaciones en todas sus evaluaciones entre el numero de evaluaciones
+        promedio/=num_evaluaciones;//Se divide la suma de sus calificaciones en todas sus evaluaciones entre el numero de evaluaciones
         promediosEstudiantes[i]=promedio;
-        printf("\nEstudiante %d: %d", (i+1),promedio);
     }
 }
-void calcularPromedioEvaluacion(){
+void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones){
+    //1. Imprimimos la cabecera de la tabla
+    printf("No. | Nombre del Estudiante \t\t| ");
+    //Mediante el ciclo, según el numero de evaluaciones, ponemos cal 1, cal 2, cal 3...
+    for(size_t j=0;j<num_evaluaciones;j++){
+        printf("Cal %d | ",j+1);
+    }
+    printf("Promedio final\n");
+    //2. Imprimir las filas (Leyendo los arreglos globales)
+    for(size_t i=0;i<num_estudiantes;i++){
+        printf("%d. | %s \t\t| ",i+1,nombresEstudiantes[i]);
+        for(size_t j=0;j<num_evaluaciones;j++){
+            printf("%d | ",calificaciones[i][j]);
+        }
+        printf("%.2f", promediosEstudiantes[i]);
+    }
+}
+//pedimos como parámetro el numero de estudiantes y evaluaciones
+void calcularPromedioEvaluacion(int num_estudiantes, int num_evaluaciones){
     float promedio;
     printf("\n--- PROMEDIO GENERALES DEL GRUPO EN LAS EVALUACIONES ---");
-    for(int j=0;j<numeroEvaluaciones;j++){//El ciclo solo recorre hasta el limite necesario (el numero de evaluaciones)
+    for(int j=0;j<num_evaluaciones;j++){//El ciclo solo recorre hasta el limite necesario (el numero de evaluaciones)
         promedio = 0.0;
-        for(int i=0;i<numeroEstudiantes;i++){//El ciclo solo recorre hasta el limite necesario (el numero de estudiantes)
+        for(int i=0;i<num_estudiantes;i++){//El ciclo solo recorre hasta el limite necesario (el numero de estudiantes)
             promedio+=calificaciones[i][j];//Sumamos todas las calificaciones del grupo en la evaluacion en curso del ciclo
         }
-        promedio/=numeroEstudiantes;//Se divide la suma de todas las calificaciones del grupo en esa evaluacion entre el tamaño del grupo(el numero de estudiantes)
+        promedio/=num_estudiantes;//Se divide la suma de todas las calificaciones del grupo en esa evaluacion entre el tamaño del grupo(el numero de estudiantes)
         printf("\n- Promedio general del grupo en la evaluación %d: %d",(j+1),promedio);
     }
 }
-void generarRanking(){
+void generarRanking(int num_estudiantes){
     // 1. Definimos el struct.
     // Esta struct solo existe dentro de esta función.
     struct EstudianteRanking{
@@ -39,9 +56,9 @@ void generarRanking(){
     };
     // 2. Creamos un arreglo con estas "características"
     // una por cada estudiante.
-    struct EstudianteRanking ranking[numeroEstudiantes];
+    struct EstudianteRanking ranking[num_estudiantes];
     // 3. Llenamos el arreglo de ranking
-    for (int i=0;i<numeroEstudiantes; i++) {
+    for (int i=0;i<num_estudiantes; i++) {
         // Guardamos los datos JUNTOS en esa "caja"
         ranking[i].promedio=promediosEstudiantes[i];
         strcpy(ranking[i].nombre,nombresEstudiantes[i]);
@@ -49,11 +66,11 @@ void generarRanking(){
     }
     // 4. Ordenamos el arreglo de con el método de ordenamiento por selección
     // Comparamos los promedios e intercambiamos el arreglo entero
-    for(int i=0;i<numeroEstudiantes;i++){
+    for(int i=0;i<num_estudiantes;i++){
         //Suponemos que el maximo es el primer elemento
         int maximo=i;
         //Empezamos a recorrer el resto del arreglo a partir del elemento siguiente a i (i+1)
-        for(int j=i+1;j<numeroEstudiantes;j++){
+        for(int j=i+1;j<num_estudiantes;j++){
             //Si el promedio en J es mayor al promedio que suponemos es maximo, entonces ahora maximo es J
             if(ranking[j].promedio>ranking[maximo].promedio){
                 maximo=j;
@@ -71,14 +88,14 @@ void generarRanking(){
     // 5. Mostramos el Top 3
     printf("\n--- RANKING (TOP 3) ---\n");
     // Nos aseguramos de no intentar mostrar 3 si hay menos de 3 estudiantes, mediante el operador ternario ?
-    int topN=(numeroEstudiantes < 3)?numeroEstudiantes:3;
+    int topN=(num_estudiantes < 3)?num_estudiantes:3;
     //Si el numero de estudiantes es menor a 3 topN=numeroEstudiantes, si no, topN=3
     for (int i = 0; i < topN; i++){
         printf("%d. %s - Promedio: %.2f\n", i + 1,ranking[i].nombre,ranking[i].promedio);
     }
     //6. Mostramos la peor calificación del grupo
-    if (numeroEstudiantes>0) {
+    if (num_estudiantes>1) {
         printf("\n--- PEOR PROMEDIO DEL GRUPO ---\n");
-        printf("%s - Promedio: %.2f\n", ranking[numeroEstudiantes - 1].nombre,ranking[numeroEstudiantes-1].promedio);
+        printf("%s - Promedio: %.2f\n", ranking[num_estudiantes - 1].nombre,ranking[num_estudiantes-1].promedio);
     }
 }
