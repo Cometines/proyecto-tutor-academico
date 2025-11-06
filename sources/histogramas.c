@@ -48,7 +48,7 @@ static void mostrarHistograma(int estudiantes){
 }
 
 void iniciarHistograma(int Estudiantes, int Evaluaciones){
-    // calcularPromedios(Calificaciones, Estudiantes, Evaluaciones);
+
     for (size_t i = 0; i < 40; i++)
     {
         asignarPosicion(promedioEstudiantes[i]);
