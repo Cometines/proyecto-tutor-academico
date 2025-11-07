@@ -24,7 +24,7 @@ void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones){
     for(size_t i=0;i<num_estudiantes;i++){
         printf("\n%d. | %s \t\t| ",i+1,nombresEstudiantes[i]);
         for(size_t j=0;j<num_evaluaciones;j++){
-            printf("%f | ",calificaciones[i][j]);
+            printf("%.2f | ",calificaciones[i][j]);
         }
         printf("%.2f", promediosEstudiantes[i]);
     }
@@ -39,7 +39,7 @@ static void calcularPromedioEvaluacion(int num_estudiantes, int num_evaluaciones
             promedio+=calificaciones[i][j];//Sumamos todas las calificaciones del grupo en la evaluacion en curso del ciclo
         }
         promedio/=num_estudiantes;//Se divide la suma de todas las calificaciones del grupo en esa evaluacion entre el tamaño del grupo(el numero de estudiantes)
-        printf("\n- Promedio general del grupo en la evaluación %d: %d",(j+1),promedio);
+        printf("\n- Promedio general del grupo en la evaluación %d: %.2f",(j+1),promedio);
     }
 }
 static void generarRanking(int num_estudiantes){
