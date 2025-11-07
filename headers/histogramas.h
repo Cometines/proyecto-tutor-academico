@@ -9,5 +9,5 @@ extern float promedioEstudiantes[40]; //Variable extern: Para su uso en cualquie
 //Declaración de funciones necesarias para definirlas en histogramas.c.
 void asignarPosicion(float promedio); // Asigna la cantidad de promedios dentro de un rango en la posición correspondiente.
 void mostrarHistograma(int estudiantes); // Empieza a dibujar el histograma.
-void iniciarHistograma(int Estudiantes, int Evaluaciones); // La función principal que dará inicio al proceso de generación del histograma.
+void iniciarHistograma(int Estudiantes); // La función principal que dará inicio al proceso de generación del histograma.
 #endif
