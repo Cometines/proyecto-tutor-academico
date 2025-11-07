@@ -4,16 +4,6 @@
 #include "../headers/histogramas.h"
 
 short int rangos[5] = {0};
-// static void calcularPromedios(int calificaciones[40][5], int estudiantes, int evaluaciones){
-//     int promedio = 0;
-//     for(size_t f = 0; f <= estudiantes; f++){
-//         for(size_t c = 0; c <= evaluaciones; c++){
-//             promedio += calificaciones[f][c];
-//         }
-//         promedio /= evaluaciones;
-//         asignarPosicion(promedio);
-//     }
-// }
 
 static void asignarPosicion(float promedio){
     short int r1 = 0, r2 = 59;

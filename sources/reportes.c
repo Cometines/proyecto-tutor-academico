@@ -3,10 +3,12 @@
 #include <string.h>
 #include "../headers/reportes.h"
 
-void mostrarReportes(){
-
+void mostrarReportes(int num_estudiantes, int num_evaluaciones){
+    mostrarListaPromedios(num_estudiantes,num_evaluaciones);
+    calcularPromedioEvaluacion(num_estudiantes,num_evaluaciones);
+    generarRanking(num_estudiantes);
 }
-void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones){
+static void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones){
     //1. Imprimimos la cabecera de la tabla
     printf("No. | Nombre del Estudiante \t\t| ");
     //Mediante el ciclo, según el numero de evaluaciones, ponemos cal 1, cal 2, cal 3...
@@ -24,7 +26,7 @@ void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones){
     }
 }
 //pedimos como parámetro el numero de estudiantes y evaluaciones
-void calcularPromedioEvaluacion(int num_estudiantes, int num_evaluaciones){
+static void calcularPromedioEvaluacion(int num_estudiantes, int num_evaluaciones){
     float promedio;
     printf("\n--- PROMEDIO GENERALES DEL GRUPO EN LAS EVALUACIONES ---");
     for(int j=0;j<num_evaluaciones;j++){//El ciclo solo recorre hasta el limite necesario (el numero de evaluaciones)
@@ -36,7 +38,7 @@ void calcularPromedioEvaluacion(int num_estudiantes, int num_evaluaciones){
         printf("\n- Promedio general del grupo en la evaluación %d: %d",(j+1),promedio);
     }
 }
-void generarRanking(int num_estudiantes){
+static void generarRanking(int num_estudiantes){
     // 1. Definimos el struct.
     // Esta struct solo existe dentro de esta función.
     struct EstudianteRanking{

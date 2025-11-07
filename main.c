@@ -61,16 +61,16 @@ int main() {
 
             switch (opcionMenu) {
                 case 1:
-                    mostrarReportesBasicos(); // De reportes.c
+                    mostrarReportes(numeroEstudiantes,numeroEvaluaciones); // De reportes.c
                     break;
                 case 2:
                     emitirAlertas(); // De alertas.c
                     break;
                 case 3:
-                    generarHistograma(); // De histograma.c
+                    iniciarHistograma(numeroEstudiantes,numeroEvaluaciones); // De histograma.c
                     break;
                 case 4:
-                    gestionarModificaciones(); // De modificar.c
+                    gestionarModificaciones(numeroEstudiantes,numeroEvaluaciones); // De modificar.c
                     break;
                 case 5:
                     printf("\nReiniciando el programa...\n");

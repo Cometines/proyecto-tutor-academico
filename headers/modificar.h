@@ -5,6 +5,6 @@ extern int calificaciones[40][5];
 extern char nombresEstudiantes[40][50];
 extern float promediosEstudiantes[40];
 extern int numeroEvaluaciones;
-void gestionarModificaciones();
+void gestionarModificaciones(int numeroEstudiantes, int numeroEvaluaciones);
 
 #endif
