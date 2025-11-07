@@ -6,8 +6,8 @@ extern char nombresEstudiantes[40][25];
 extern float promediosEstudiantes[40];
 
 void mostrarReportes();
-void calcularPromedioEvaluacion();
-void calcularPromedioEstudiante();
-void generarRanking();
+void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones);
+void calcularPromedioEvaluacion(int num_estudiantes, int num_evaluaciones);
+void generarRanking(int num_estudiantes);
 
 #endif

@@ -6,17 +6,6 @@
 void mostrarReportes(){
 
 }
-void calcularPromedioEstudiante(int num_estudiantes, int num_evaluaciones){
-    float promedio;
-    for(size_t i=0;i<num_estudiantes;i++){//El ciclo solo recorre hasta el limite necesario (el numero de estudiantes)
-        promedio=0.0;
-        for(size_t j=0;j<num_evaluaciones;j++){//El ciclo solo recorre hasta el limite necesario (el numero de evaluaciones)
-            promedio+=calificaciones[i][j];//Sumamos las calificaciones de cada alumno en todas sus evaluaciones
-        }
-        promedio/=num_evaluaciones;//Se divide la suma de sus calificaciones en todas sus evaluaciones entre el numero de evaluaciones
-        promediosEstudiantes[i]=promedio;
-    }
-}
 void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones){
     //1. Imprimimos la cabecera de la tabla
     printf("No. | Nombre del Estudiante \t\t| ");

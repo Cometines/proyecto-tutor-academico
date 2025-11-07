@@ -3,11 +3,14 @@
 
 extern int calificaciones[40][5];
 extern char nombresEstudiantes[40][50];
+extern float promediosEstudiantes[40];
 
-int capturarEstudiantescant();
+int capturarNumeroEstudiantes();
 
-int capturarEvaluacionescant();
+int capturarNumeroEvaluaciones();
 
 void capturarCalificaciones(int numeroEstudiantes, int numeroEvaluaciones);
+
+void calcularPromedioEstudiante(int num_estudiantes, int num_evaluaciones);
 
 #endif

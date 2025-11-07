@@ -16,47 +16,77 @@ float promediosEstudiantes[40];
 int numeroEstudiantes=0;
 int numeroEvaluaciones=0;
 
-int main(){
-    int opcion=0;
-    do{
+int main() {
+    // Se ejecutará infinitamente hasta que se cierre la consola.
+    do {
         system("cls");
-        printf("---------------------------------\n");
-        printf("==        TUTOR ACADEMICO      ==\n");
-        printf("=================================\n");
-        printf("1. Capturar Calificaciones\n");
-        printf("=================================\n");
-        printf("3. Emitir Alertas de Riesgo\n");
-        printf("2. Mostrar Reportes Basicos (Promedios y Ranking)\n");
-        printf("5. Salir\n");
-        printf("4. Generar Histograma de Calificaciones\n");
-        printf("Selecciona una opcion: ");
-        scanf("%d",&opcion);
-        switch (opcion) {
-            case 1:
-                capturarCalificaciones();
-                break;
-            case 2:
-                mostrarReportesBasicos();
-                break;
-            case 3:
-                emitirAlertas();
-                break;
-            case 4:
-                generarHistograma();
-                break;
-            case 5:
-                printf("\nGracias por usar (nombre de programa)\n");//nombre de programa aun en construcción
-                break;
-            default:
-                printf("\nOpcion no válida. Por favor, intente de nuevo.\n");
-        }
-        // Pequeña pausa para que el usuario pueda leer antes de limpiar la pantalla.
-        if (opcion != 5) {
-            printf("\nPresione Enter para continuar...");
-            // Doble getchar() para limpiar el buffer del teclado y esperar al usuario.
-            while (getchar() != '\n');
-            getchar();
-        }
-    }while(opcion!=5);
-    return 0;
+        printf("==================================================\n");
+        printf("==      BIENVENIDO AL SISTEMA TUTOR ACADEMICO   ==\n");
+        printf("==   Se requiere la captura inicial de datos    ==\n");
+        printf("==================================================\n");
+
+        // --- 1. CAPTURA DE DATOS FORZADA ---
+        numeroEstudiantes=capturarNumeroEstudiantes();
+        numeroEvaluaciones=capturarNumeroEvaluaciones();
+        capturarCalificaciones(numeroEstudiantes,numeroEvaluaciones); // Llena 'nombresEstudiantes' y 'calificaciones'
+        calcularPromedioEstudiantes(numeroEstudiantes,numeroEvaluaciones); // Llena 'promediosEstudiantes'
+
+        printf("\n¡Datos capturados y promedios calculados!\n");
+        printf("Presione Enter para acceder al menu principal...");
+        while (getchar() != '\n');
+        getchar();
+
+        // --- 2. BUCLE INTERNO (MENÚ PRINCIPAL) ---
+        int opcionMenu = 0;
+        do {
+            system("cls");
+            printf("---------------------------------\n");
+            printf("==        TUTOR ACADEMICO      ==\n");
+            printf("==        MENU  PRINCIPAL      ==\n");
+            printf("=================================\n");
+            printf("1. Mostrar Reportes Basicos\n");
+            printf("2. Mostrar Alertas de Riesgo\n");
+            printf("3. Generar Histograma\n");
+            printf("4. Modificar datos de un alumno\n");
+            printf("5. Reiniciar programa (Ingresar nuevos datos)\n");
+            printf("---------------------------------\n");
+            printf("Seleccione una opcion: ");
+            scanf("%d", &opcionMenu);
+
+            switch (opcionMenu) {
+                case 1:
+                    mostrarReportesBasicos(); // De reportes.c
+                    break;
+                case 2:
+                    emitirAlertas(); // De alertas.c
+                    break;
+                case 3:
+                    generarHistograma(); // De histograma.c
+                    break;
+                case 4:
+                    gestionarModificaciones(); // De modificar.c
+                    break;
+                case 5:
+                    printf("\nReiniciando el programa...\n");
+                    // Al salir de este bucle, el bucle externo se repetirá, forzando la captura de datos de nuevo.
+                    printf("Presione Enter para confirmar...");
+                    while (getchar() != '\n');
+                    getchar();
+                    break;
+                default:
+                    printf("\nOpcion no valida. Intente de nuevo.\n");
+            }
+
+            // Pausa solo para las opciones 1-4
+            if (opcionMenu > 0 && opcionMenu < 5) {
+                printf("\nPresione Enter para volver al menu...");
+                while (getchar() != '\n');
+                getchar();
+            }
+
+        } while (opcionMenu != 5); // El bucle del menú termina cuando el usuario elige 5
+
+    } while (true); // Siempre se repite, forzando el reinicio
+
+    return 0; // (Este código ya no es alcanzable, pero es estándar)
 }
