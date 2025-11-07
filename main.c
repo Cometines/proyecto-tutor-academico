@@ -35,7 +35,7 @@ int main() {
         numeroEstudiantes=capturarNumeroEstudiantes();
         numeroEvaluaciones=capturarNumeroEvaluaciones();
         capturarCalificaciones(numeroEstudiantes,numeroEvaluaciones); // Llena 'nombresEstudiantes' y 'calificaciones'
-        calcularPromedioEstudiantes(numeroEstudiantes,numeroEvaluaciones); // Llena 'promediosEstudiantes'
+        calcularPromedioEstudiante(numeroEstudiantes,numeroEvaluaciones); // Llena 'promediosEstudiantes'
 
         printf("\n¡Datos capturados y promedios calculados!\n");
         printf("Presione Enter para acceder al menu principal...");
