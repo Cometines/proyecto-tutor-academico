@@ -3,12 +3,16 @@
 #include <string.h>
 #include "../headers/reportes.h"
 
+void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones);
+static void calcularPromedioEvaluacion(int num_estudiantes, int num_evaluaciones);
+static void generarRanking(int num_estudiantes);
+
 void mostrarReportes(int num_estudiantes, int num_evaluaciones){
     mostrarListaPromedios(num_estudiantes,num_evaluaciones);
     calcularPromedioEvaluacion(num_estudiantes,num_evaluaciones);
     generarRanking(num_estudiantes);
 }
-static void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones){
+void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones){
     //1. Imprimimos la cabecera de la tabla
     printf("No. | Nombre del Estudiante \t\t| ");
     //Mediante el ciclo, según el numero de evaluaciones, ponemos cal 1, cal 2, cal 3...

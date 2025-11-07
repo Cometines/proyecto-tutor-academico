@@ -6,5 +6,6 @@ extern char nombresEstudiantes[40][50];
 extern float promediosEstudiantes[40];
 
 void mostrarReportes(int num_estudiantes, int num_evaluaciones);
+void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones);
 
 #endif
