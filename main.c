@@ -16,7 +16,7 @@ García Gómez Olga Lisseth
 Reyes Torres Kelaia
 */
 
-int calificaciones[40][5];
+float calificaciones[40][5];
 char nombresEstudiantes[40][50];
 float promediosEstudiantes[40];
 int numeroEstudiantes=0;
