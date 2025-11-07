@@ -2,7 +2,7 @@
 #include <string.h> 
 #include "../headers/captura.h"
 
-int capturarEstudiantescant(){
+int capturarNumeroEstudiantes(){
     int numeroEstudiantes = 0; 
     int i = 1;
     do{
@@ -17,7 +17,7 @@ int capturarEstudiantescant(){
     return numeroEstudiantes;
 }
 
-int capturarEvaluacionescant(){
+int capturarNumeroEvaluaciones(){
     int numeroEvaluaciones=0;
     int i = 1;
     do
@@ -34,9 +34,9 @@ int capturarEvaluacionescant(){
 
     return numeroEvaluaciones;
 }
-
 void capturarCalificaciones(int numeroEstudiantes, int numeroEvaluaciones){
     printf("\nAhora, ingrese los datos de cada estudiante:\n");
+    while (getchar() != '\n');
     for (int i = 0; i < numeroEstudiantes; i++) {
         printf("\nNombre del Estudiante %d: ", i + 1);
         // scanf(" [^\n]", nombresEstudiantes[i]); // Lee nombres con espacios
@@ -48,6 +48,18 @@ void capturarCalificaciones(int numeroEstudiantes, int numeroEvaluaciones){
             scanf("%f", &calificaciones[i][j]);
             // TODO: Añadir validación para que la nota esté entre 0 y 100.
         }
+        while (getchar() != '\n');
     }
     printf("\n[!] Datos guardados correctamente.\n");
+}
+void calcularPromedioEstudiante(int num_estudiantes, int num_evaluaciones){
+    float promedio;
+    for(size_t i=0;i<num_estudiantes;i++){//El ciclo solo recorre hasta el limite necesario (el numero de estudiantes)
+        promedio=0.0;
+        for(size_t j=0;j<num_evaluaciones;j++){//El ciclo solo recorre hasta el limite necesario (el numero de evaluaciones)
+            promedio+=calificaciones[i][j];//Sumamos las calificaciones de cada alumno en todas sus evaluaciones
+        }
+        promedio/=num_evaluaciones;//Se divide la suma de sus calificaciones en todas sus evaluaciones entre el numero de evaluaciones
+        promediosEstudiantes[i]=promedio;
+    }
 }
