@@ -67,7 +67,7 @@ int main() {
                     emitirAlertas(); // De alertas.c
                     break;
                 case 3:
-                    iniciarHistograma(numeroEstudiantes,numeroEvaluaciones); // De histograma.c
+                    iniciarHistograma(numeroEstudiantes); // De histograma.c
                     break;
                 case 4:
                     gestionarModificaciones(numeroEstudiantes,numeroEvaluaciones); // De modificar.c
