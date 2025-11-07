@@ -36,6 +36,7 @@ int capturarNumeroEvaluaciones(){
 }
 void capturarCalificaciones(int numeroEstudiantes, int numeroEvaluaciones){
     printf("\nAhora, ingrese los datos de cada estudiante:\n");
+    while (getchar() != '\n');
     for (int i = 0; i < numeroEstudiantes; i++) {
         printf("\nNombre del Estudiante %d: ", i + 1);
         // scanf(" [^\n]", nombresEstudiantes[i]); // Lee nombres con espacios
@@ -47,6 +48,7 @@ void capturarCalificaciones(int numeroEstudiantes, int numeroEvaluaciones){
             scanf("%f", &calificaciones[i][j]);
             // TODO: Añadir validación para que la nota esté entre 0 y 100.
         }
+        while (getchar() != '\n');
     }
     printf("\n[!] Datos guardados correctamente.\n");
 }
