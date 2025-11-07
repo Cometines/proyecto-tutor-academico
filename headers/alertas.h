@@ -2,9 +2,9 @@
 #define ALERTAS_H //evita que se duplique o se modifique
 //extern dice que las variables si existen pero en otra parte del proyecto
 extern int calificaciones[40][5];
-extern char nombresEstudiantes[40][25];
-extern int numeroEstudiantes=0;
-extern int numeroEvaluaciones=0;
+extern char nombresEstudiantes[40][50];
+extern int numeroEstudiantes;
+extern int numeroEvaluaciones;
 
 void emitirAlertas();
 #endif //FIN DEL BLOQUE
