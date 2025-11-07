@@ -22,9 +22,9 @@ void mostrarListaPromedios(int num_estudiantes,int num_evaluaciones){
     printf("Promedio final\n");
     //2. Imprimir las filas (Leyendo los arreglos globales)
     for(size_t i=0;i<num_estudiantes;i++){
-        printf("%d. | %s \t\t| ",i+1,nombresEstudiantes[i]);
+        printf("\n%d. | %s \t\t| ",i+1,nombresEstudiantes[i]);
         for(size_t j=0;j<num_evaluaciones;j++){
-            printf("%d | ",calificaciones[i][j]);
+            printf("%f | ",calificaciones[i][j]);
         }
         printf("%.2f", promediosEstudiantes[i]);
     }
