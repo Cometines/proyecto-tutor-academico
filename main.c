@@ -7,6 +7,8 @@
 #include "headers/alertas.h"
 #include "headers/histogramas.h"
 #include "headers/modificar.h"
+#include "headers/numeros.h"
+#include "headers/plataforma.h"
 
 /*Integrantes del equipo:
 Méndez Lagunes Leonardo Alberto
@@ -25,7 +27,7 @@ int numeroEvaluaciones=0;
 int main() {
     // Se ejecutará infinitamente hasta que se cierre la consola.
     do {
-        system("cls");
+        limpiarConsola();
         printf("==================================================\n");
         printf("==      BIENVENIDO AL SISTEMA TUTOR ACADEMICO   ==\n");
         printf("==   Se requiere la captura inicial de datos    ==\n");
@@ -45,7 +47,7 @@ int main() {
         // --- 2. BUCLE INTERNO (MENÚ PRINCIPAL) ---
         int opcionMenu = 0;
         do {
-            system("cls");
+            limpiarConsola();
             printf("---------------------------------\n");
             printf("==        TUTOR ACADEMICO      ==\n");
             printf("==        MENU  PRINCIPAL      ==\n");
@@ -57,7 +59,7 @@ int main() {
             printf("5. Reiniciar programa (Ingresar nuevos datos)\n");
             printf("---------------------------------\n");
             printf("Seleccione una opcion: ");
-            scanf("%d", &opcionMenu);
+            opcionMenu = getInt();
 
             switch (opcionMenu) {
                 case 1:
