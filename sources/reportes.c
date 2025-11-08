@@ -39,7 +39,7 @@ static void calcularPromedioEvaluacion(int num_estudiantes, int num_evaluaciones
             promedio+=calificaciones[i][j];//Sumamos todas las calificaciones del grupo en la evaluacion en curso del ciclo
         }
         promedio/=num_estudiantes;//Se divide la suma de todas las calificaciones del grupo en esa evaluacion entre el tamaño del grupo(el numero de estudiantes)
-        printf("\n- Promedio general del grupo en la evaluación %d: %.2f",(j+1),promedio);
+        printf("\n- Promedio general del grupo en la evaluacion %d: %.2f",(j+1),promedio);
     }
 }
 static void generarRanking(int num_estudiantes){
@@ -81,9 +81,9 @@ static void generarRanking(int num_estudiantes){
         ranking[maximo]=aux;
     }
     // 5. Mostramos el Top 3
-    printf("\n--- RANKING (TOP 3) ---\n");
     // Nos aseguramos de no intentar mostrar 3 si hay menos de 3 estudiantes, mediante el operador ternario ?
     int topN=(num_estudiantes < 3)?num_estudiantes:3;
+    printf("\n--- RANKING (TOP %d) ---\n",topN);
     //Si el numero de estudiantes es menor a 3 topN=numeroEstudiantes, si no, topN=3
     for (int i = 0; i < topN; i++){
         printf("%d. %s - Promedio: %.2f\n", i + 1,ranking[i].nombre,ranking[i].promedio);
