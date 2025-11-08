@@ -1,14 +1,16 @@
+//Importacion de librerias necesarias
 #include <stdio.h>
 #include <string.h> 
 #include "../headers/captura.h"
+#include "../headers/numeros.h"
 
-int capturarNumeroEstudiantes(){
+int capturarNumeroEstudiantes(){//Funcion encargada de capturar la cantidad de Estudiantes
     int numeroEstudiantes = 0; 
     int i = 1;
     do{
         printf("\n--- Captura de Datos ---\n");
         printf("Cuantos estudiantes son? (1-40): ");
-        scanf("%d", &numeroEstudiantes);
+        numeroEstudiantes = getInt();
         if (numeroEstudiantes > 40 || numeroEstudiantes < 1)
             printf("RANGO ESTABLECIDO: 1-40. VUELVA A INTENTARLO");
         else
@@ -17,14 +19,13 @@ int capturarNumeroEstudiantes(){
     return numeroEstudiantes;
 }
 
-int capturarNumeroEvaluaciones(){
+int capturarNumeroEvaluaciones(){//Funcion encargada de captura la cantidad de evaluaciones
     int numeroEvaluaciones=0;
     int i = 1;
     do
     {
         printf("Cuantas evaluaciones son? (1-5): ");
-        scanf("%d", &numeroEvaluaciones);
-    
+        numeroEvaluaciones = getInt();
         if (numeroEvaluaciones > 0 && numeroEvaluaciones < 6)
             i = 0;
         else
@@ -34,7 +35,8 @@ int capturarNumeroEvaluaciones(){
 
     return numeroEvaluaciones;
 }
-void capturarCalificaciones(int numeroEstudiantes, int numeroEvaluaciones){
+void capturarCalificaciones(int numeroEstudiantes, int numeroEvaluaciones){//Funcion que captura el nombre del estudiantes junto a sus respectiva calificaciones
+    int b;
     printf("\nAhora, ingrese los datos de cada estudiante:\n");
     while (getchar() != '\n');
     for (int i = 0; i < numeroEstudiantes; i++) {
@@ -44,15 +46,24 @@ void capturarCalificaciones(int numeroEstudiantes, int numeroEvaluaciones){
         nombresEstudiantes[i][strcspn(nombresEstudiantes[i], "\n")] = '\0';
 
         for (int j = 0; j < numeroEvaluaciones; j++) {
-            printf("  Ingrese calificacion de la Evaluacion %d: ", j + 1);
-            scanf("%f", &calificaciones[i][j]);
+            do
+            {
+                printf("  Ingrese calificacion de la Evaluacion %d (0-100): ", j + 1);
+                calificaciones[i][j] = getFloat();
+                if (calificaciones[i][j] < 0 || calificaciones[i][j] > 100)
+                    printf("Por favor, ingresa una calificación dentro del rango especificado.");
+                else
+                    b = 1;
+            } while (b!=1);
+            
             // TODO: Añadir validación para que la nota esté entre 0 y 100.
         }
         while (getchar() != '\n');
     }
     printf("\n[!] Datos guardados correctamente.\n");
 }
-void calcularPromedioEstudiante(int num_estudiantes, int num_evaluaciones){
+
+void calcularPromedioEstudiante(int num_estudiantes, int num_evaluaciones){//Funcion que calcula el promedio de los estudiantes dadas las calificaciones
     float promedio;
     for(size_t i=0;i<num_estudiantes;i++){//El ciclo solo recorre hasta el limite necesario (el numero de estudiantes)
         promedio=0.0;

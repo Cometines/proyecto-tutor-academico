@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "plataforma.h": "c",
+        "stddef.h": "c",
+        "stdio.h": "c",
+        "modificar.h": "c"
+    }
+}

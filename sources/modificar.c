@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "../headers/modificar.h"
 #include "../headers/reportes.h"
+#include "../headers/numeros.h"
+#include "../headers/plataforma.h"
 
 // --- Función Privada de Recálculo ---
 // Esta función recalcula el promedio para UN SOLO estudiante
@@ -18,7 +20,7 @@ void recalcularPromedio(int indiceEstudiante, int numeroEvaluaciones) {
 void gestionarModificaciones(int numeroEstudiantes, int numeroEvaluaciones) {
     int opcionMod = 0;
     do {
-        system("cls");
+        limpiarConsola();
         printf("--- Submenu de Modificaciones ---\n");
         mostrarListaPromedios(numeroEstudiantes,numeroEvaluaciones);
         printf("--- Opciones de modificación ---\n");
@@ -27,14 +29,14 @@ void gestionarModificaciones(int numeroEstudiantes, int numeroEvaluaciones) {
         printf("3. Volver al Menu Principal\n");
         printf("---------------------------------\n");
         printf("Seleccione una opcion: ");
-        scanf("%d", &opcionMod);
+        opcionMod = getInt();
 
         int indiceEst, indiceEv; // Índices para el estudiante y la evaluación
 
         switch(opcionMod) {
             case 1: // --- Modificar Nombre ---
                 printf("Ingrese el No. de lista del estudiante (1 a %d): ", numeroEstudiantes);
-                scanf("%d", &indiceEst);
+                indiceEst = getInt();
                 indiceEst--; // Convertir de No. de lista (1-based) a índice (0-based)
 
                 if (indiceEst < 0 || indiceEst >= numeroEstudiantes) {
@@ -49,7 +51,7 @@ void gestionarModificaciones(int numeroEstudiantes, int numeroEvaluaciones) {
             
             case 2: // --- Modificar Calificación ---
                 printf("Ingrese el No. de lista del estudiante (1 a %d): ", numeroEstudiantes);
-                scanf("%d", &indiceEst);
+                indiceEst = getInt();
                 indiceEst--; // Convertir a 0-based
 
                 if (indiceEst < 0 || indiceEst >= numeroEstudiantes) {
@@ -59,7 +61,7 @@ void gestionarModificaciones(int numeroEstudiantes, int numeroEvaluaciones) {
 
                 printf("Modificando a: %s\n", nombresEstudiantes[indiceEst]);
                 printf("Ingrese el No. de evaluacion a modificar (1 a %d): ", numeroEvaluaciones);
-                scanf("%d", &indiceEv);
+                indiceEv = getInt();
                 indiceEv--; // Convertir a 0-based
 
                 if (indiceEv < 0 || indiceEv >= numeroEvaluaciones) {
@@ -68,8 +70,16 @@ void gestionarModificaciones(int numeroEstudiantes, int numeroEvaluaciones) {
                 }
 
                 printf("Calificacion actual (Ev. %d): %.2f\n",indiceEv + 1,calificaciones[indiceEst][indiceEv]);
-                printf("Ingrese la nueva calificacion (0-100): ");
-                scanf("%f", &calificaciones[indiceEst][indiceEv]);
+                int b = 0;
+                do
+                {
+                    printf("Ingrese la nueva calificacion (0-100): ");
+                    calificaciones[indiceEst][indiceEv] = getFloat();
+                    if (calificaciones[indiceEst][indiceEv] < 0 || calificaciones[indiceEst][indiceEv] > 100)
+                        printf("Por favor, ingresa una calificación dentro del rango especificado.");
+                    else
+                        b = 1;
+                } while (b!=1);
                 // ... (agregar validación 0-100) ...
 
                 // --- Recalcular Promedio (Petición clave) ---
