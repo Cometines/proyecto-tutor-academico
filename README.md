@@ -29,17 +29,20 @@ Este proyecto fue desarrollado para la materia de Programación Estructurada.
 
 ## ⚙️ Cómo Compilar y Ejecutar
 
-Este proyecto está diseñado para ser compilado con GCC.
+Este proyecto está diseñado para ser multiplataforma y compilarse con GCC (o compiladores compatibles como Clang). Gracias a la modularización, el código fuente detecta automáticamente el sistema operativo (Windows o UNIX) y usa las funciones correctas.
 
 ### 1. Prerrequisitos
 
-Asegúrate de tener instalado `Git` y un compilador de C como `GCC` (MinGW en Windows) configurado en el PATH de tu sistema.
+Asegúrate de tener instalado `Git` y un compilador de C:
+* **En Windows:** Se recomienda [MinGW-w64](https://www.mingw-w64.org/) (que provee GCC).
+* **En macOS:** Instala las Herramientas de Línea de Comandos de Xcode (que provee Clang/GCC).
+* **En Linux:** Instala el paquete `build-essential` (que provee GCC).
 
 ### 2. Clonar el Repositorio
 
-Abre una terminal y clona el proyecto:
 ```bash
 git clone [https://github.com/Cometines/proyecto-tutor-academico.git](https://github.com/Cometines/proyecto-tutor-academico.git)
+cd proyecto-tutor-academico
 ```
 
 ### 3. Navegar al Directorio
@@ -50,21 +53,33 @@ cd proyecto-tutor-academico
 
 ### 4. Compilar
 
-Ejecuta el siguiente comando en la terminal (estando en la carpeta raíz del proyecto). Este comando enlaza todos los módulos `.c` y le dice al compilador dónde encontrar las cabeceras (`-Iinclude`).
+Ejecuta los siguientes comandos en la terminal (estando en el directorio de la carpeta raíz del proyecto). Este comando enlaza todos los módulos `.c` y le dice al compilador dónde encontrar las cabeceras (`-Iheaders`).
+**En Windows (Usando MinGW/GCC)**
 
 ```bash
-gcc main.c src/captura.c src/reportes.c src/alertas.c src/histograma.c src/modificar.c -Iinclude -o TutorAcademico.exe
+gcc main.c src/captura.c src/reportes.c src/alertas.c src/histograma.c src/modificar.c -Iheaders -o TutorAcademico.exe
 ```
 
+**En Linux o macOS**
+```bash
+gcc main.c src/captura.c src/reportes.c src/alertas.c src/histograma.c src/modificar.c src/plataforma.c -Iheaders -o TutorAcademico
+```
 ### 5. Ejecutar
 
 Una vez compilado, ejecuta el programa:
+
+**En Windows (Git Bash)**
 
 ```bash
 ./TutorAcademico.exe
 ```
 (O `TutorAcademico.exe` si estás en el Símbolo del sistema de Windows).
 
+**En Linux o macOS**(Es posible que primero debas darle permisos de ejecución)
+```bash
+chmod +x TutorAcademico
+./TutorAcademico
+```
 ---
 
 ## 🧪 Casos de Prueba
@@ -85,11 +100,8 @@ El proyecto se dividió en módulos, con un responsable asignado a cada componen
 
 | Rol | Miembro del Equipo | Módulo Asignado | Responsabilidades |
 | :--- | :--- | :--- | :--- |
-| **Líder de Proyecto / Integrador** | Leonardo Alberto Méndez Lagunes | `main.c` / GitHub | Supervisión general, control de versiones, integración de Pull Requests, reglas de repositorio y desarrollo del bucle principal. |
-| **Desarrollador 1** | (Nombre del Alumno 2) | `src/captura.c` | Implementación de la captura inicial de datos, validaciones de entrada y cálculo inicial de promedios. |
-| **Desarrollador 2** | (Nombre del Alumno 3) | `src/reportes.c` | Implementación de la lista de alumnos, cálculo de promedios por evaluación y generación del ranking (Top 3 y peor). |
-| **Desarrollador 3** | (Nombre del Alumno 4) | `src/alertas.c` | Implementación de la lógica para identificar y mostrar a los estudiantes en riesgo académico. |
-| **Desarrollador 4** | (Nombre del Alumno 5) | `src/histograma.c` | Implementación de la lógica para contar y mostrar el histograma textual de calificaciones. |
-| **Desarrollador 5** | (Nombre del Alumno 6) | `src/modificar.c` | Implementación del submenú de modificaciones, lógica de acceso por No. de lista y recálculo de promedios. |
-
-*(Nota: Si son 5 miembros, ajusten los roles 3, 4 y 5 según corresponda. Por ejemplo, una persona pudo haber hecho Alertas e Histograma).*
+| **Líder de Proyecto / Integrador** | Leonardo Alberto Méndez Lagunes | `main.c` / `reportes.c` / GitHub | Supervisión general, control de versiones, integración de Pull Requests, reglas de repositorio. Implementación de la lista de alumnos, cálculo de promedios por evaluación y generación del ranking (Top 3 y peor).  |
+| **Desarrollador 1** | Ervin Antonio Feliciano Gonzalez | `sources/alertas.c` / `sources/plataforma.c` | Implementación de la lógica para identificar y mostrar a los estudiantes en riesgo académico. Implementación de las funciones que incluyen las librerías adecuadas según el sistema operativo |
+| **Desarrollador 2** | Kelaia Reyes Torres | `sources/histogramas.c` / `sources/modificar.c` | Implementación de la lógica para contar y mostrar el histograma textual de calificaciones. Implementación del submenú de modificaciones, lógica de acceso por No. de lista y recálculo de promedios. |
+| **Desarrollador 3** | (Nombre del Alumno 4) | `sources/capturas.c` | Implementación de la lógica de captura del numero de evaluaciones y estudiantes, con validaciones. |
+| **Desarrollador 4** | (Nombre del Alumno 5) | `sources/capturas.c` | Implementación de la captura de los datos de los estudiantes, calificaciones, validaciones de entrada y cálculo inicial de promedios. |
