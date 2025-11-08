@@ -54,6 +54,7 @@ cd proyecto-tutor-academico
 ### 4. Compilar
 
 Ejecuta los siguientes comandos en la terminal (estando en el directorio de la carpeta raíz del proyecto). Este comando enlaza todos los módulos `.c` y le dice al compilador dónde encontrar las cabeceras (`-Iheaders`).
+
 **En Windows (Usando MinGW/GCC)**
 
 ```bash
@@ -75,7 +76,7 @@ Una vez compilado, ejecuta el programa:
 ```
 (O `TutorAcademico.exe` si estás en el Símbolo del sistema de Windows).
 
-**En Linux o macOS**(Es posible que primero debas darle permisos de ejecución)
+**En Linux o macOS** (Es posible que primero debas darle permisos de ejecución)
 ```bash
 chmod +x TutorAcademico
 ./TutorAcademico
